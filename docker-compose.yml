@@ -1,0 +1,6 @@
+bin:
+    build: .
+    ports:
+        - "8080:8080"
+    volumes:
+        - ./:/go/src/github.com/paked/binloader
