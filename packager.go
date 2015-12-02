@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 	"os/exec"
@@ -67,8 +67,5 @@ func (Packager) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	reader := bufio.NewReader(f)
-	reader.WriteTo(w)
-
-	//fmt.Fprintf(w, "building %v for %v_%v", pack, goarch, goos)
+	io.Copy(w, f)
 }
